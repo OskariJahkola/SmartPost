@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="1080.0" maxWidth="1920.0" minHeight="480.0" minWidth="600.0" prefHeight="865.0" prefWidth="934.0" styleClass="pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oliotht.FXMLDocumentController">
+    <children>
+      <TabPane fx:id="tabMenu" prefHeight="865.0" prefWidth="934.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="mainTab" text="Päävalikko">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="836.0" prefWidth="941.0" styleClass="pane">
+                     <children>
+                          <Label layoutX="10.0" layoutY="10.0" minHeight="42.0" minWidth="140.0" prefHeight="42.0" prefWidth="450.0" text="T.I.M.O. Päävalikko" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <WebView fx:id="webmap" layoutY="59.0" maxHeight="680.0" maxWidth="1240.0" prefHeight="630.0" prefWidth="934.0" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0" />
+                        <Pane layoutY="690.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="110.0" minWidth="680.0" prefHeight="146.0" prefWidth="934.0" styleClass="pane">
+                           <children>
+                              <Button fx:id="clearButton" layoutX="452.0" layoutY="90.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="25.0" prefWidth="141.0" text="Poista reitit" />
+                              <Button fx:id="sendButton" layoutX="452.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleSendAction" prefHeight="25.0" prefWidth="141.0" text="Lähetä paketti" />
+                              <Button fx:id="createButton" layoutX="120.0" layoutY="90.0" onAction="#handleCreateAction" prefHeight="25.0" prefWidth="115.0" text="Luo piste" />
+                              <Button fx:id="openCreateButton" layoutX="452.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOpenCreateAction" prefHeight="25.0" prefWidth="141.0" text="Luo paketti" />
+                              <TextArea fx:id="messages" editable="false" layoutX="609.0" layoutY="35.0" prefHeight="83.0" prefWidth="315.0" />
+                              <ComboBox fx:id="smartPostsCombo" layoutX="14.0" layoutY="52.0" prefHeight="25.0" prefWidth="221.0" promptText="SmartPost asema" />
+                              <Label layoutX="610.0" layoutY="12.0" minHeight="19.0" minWidth="62.0" prefHeight="19.0" prefWidth="62.0" text="Viestit" textFill="#8a8a8a">
+                                 <font>
+                                    <Font name="Segoe UI" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="packagesCombo" layoutX="248.0" layoutY="14.0" prefHeight="25.0" prefWidth="194.0" promptText="Paketti" />
+                              <ComboBox fx:id="smartPostCityCombo" layoutX="14.0" layoutY="14.0" onAction="#handleSmartPostCityAction" prefHeight="25.0" prefWidth="221.0" promptText="Kaupunki" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="packageTab" text="Paketointi">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane">
+                     <children>
+                        <Button fx:id="cancelButton" layoutX="556.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleCancelPackageAction" prefHeight="51.0" prefWidth="161.0" styleClass="largebutton" text="Peruuta">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <ComboBox fx:id="itemsCombo" layoutX="24.0" layoutY="131.0" onAction="#handleItemsComboAction" prefHeight="25.0" prefWidth="343.0" promptText="Esineet" />
+                        <Label layoutX="24.0" layoutY="100.0" prefHeight="27.0" prefWidth="146.0" text="Valitse esine:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="packagingMessages" editable="false" layoutX="14.0" layoutY="592.0" prefHeight="219.0" prefWidth="905.0" promptText="Viestit" />
+                        <Button fx:id="packageButton" layoutX="743.0" layoutY="528.0" mnemonicParsing="false" onAction="#handlePackageAction" prefHeight="51.0" prefWidth="176.0" styleClass="largebutton" text="Paketoi">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="486.0" layoutY="417.0" prefHeight="17.0" prefWidth="60.0" text="Mihin">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="418.0" prefHeight="17.0" prefWidth="56.0" text="Mistä">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="senderCombo" layoutX="24.0" layoutY="484.0" prefHeight="25.0" prefWidth="343.0" promptText="Lähtee" />
+                        <Label layoutX="10.0" layoutY="10.0" minHeight="42.0" minWidth="140.0" prefHeight="42.0" prefWidth="450.0" text="T.I.M.O. Paketointiasema">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="24.0" layoutY="378.0" prefHeight="36.0" prefWidth="215.0" text="Paketin lähetystiedot:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="recieverCombo" layoutX="483.0" layoutY="484.0" prefHeight="25.0" prefWidth="343.0" promptText="Saapuu" />
+                        <Label layoutX="24.0" layoutY="204.0" prefHeight="27.0" prefWidth="210.0" text="Luo uusi esine:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nameField" layoutX="24.0" layoutY="233.0" onKeyTyped="#handleNewItemNameAction" prefHeight="25.0" prefWidth="343.0" promptText="Nimi" />
+                        <TextField fx:id="sizeField" layoutX="24.0" layoutY="268.0" onKeyTyped="#handleNewItemSizeAction" prefHeight="25.0" prefWidth="343.0" promptText="Koko        (cm*cm*cm)" />
+                        <TextField fx:id="weightField" layoutX="24.0" layoutY="303.0" onKeyTyped="#handleNewItemMassAction" prefHeight="25.0" prefWidth="343.0" promptText="Massa      (kg)" />
+                        <RadioButton fx:id="FirstClassRadio" layoutX="483.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleClass1RadioAction" text="1. Luokka">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="classGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="SecondClassRadio" layoutX="483.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleClass2RadioAction" text="2. Luokka" toggleGroup="$classGroup" />
+                        <RadioButton fx:id="ThirdClassRadio" layoutX="483.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleClass3RadioAction" text="3. Luokka" toggleGroup="$classGroup" />
+                        <Label layoutX="482.0" layoutY="188.0" prefHeight="27.0" prefWidth="210.0" text="Valitse pakettiluokka:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="152.0" layoutY="166.0" prefHeight="35.0" prefWidth="59.0" text="TAI">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="556.0" prefHeight="27.0" prefWidth="210.0" text="Tietoa paketoinnista:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="fragileCheck" layoutX="482.0" layoutY="135.0" mnemonicParsing="false" text="Lisää särkyvä tarra pakettiin?" />
+                        <Label layoutX="481.0" layoutY="100.0" prefHeight="27.0" prefWidth="146.0" text="Ominaisuudet:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="fragileItemCheck" layoutX="24.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleFragileItemAction" text="Onko esine särkyvä?" />
+                        <ComboBox fx:id="senderCityCombo" layoutX="24.0" layoutY="443.0" onAction="#handleSenderCityAction" prefHeight="25.0" prefWidth="343.0" promptText="Kaupungista" />
+                        <ComboBox fx:id="recieverCityCombo" layoutX="483.0" layoutY="443.0" onAction="#handleRecieverCityAction" prefHeight="25.0" prefWidth="343.0" promptText="Kaupunkiin" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="logstatTab" onSelectionChanged="#handleTabChangeAction" text="Logistiikka">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane">
+                     <children>
+                        <TextArea fx:id="packageInfo" editable="false" layoutX="17.0" layoutY="138.0" prefHeight="180.0" prefWidth="435.0" />
+                        <Label layoutX="10.0" layoutY="10.0" minHeight="42.0" minWidth="140.0" prefHeight="42.0" prefWidth="906.0" text="T.I.M.O. Logistiikka">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="itemInfo" editable="false" layoutX="482.0" layoutY="138.0" prefHeight="180.0" prefWidth="435.0" />
+                        <TextArea fx:id="shippingInfo" editable="false" layoutX="17.0" layoutY="396.0" prefHeight="180.0" prefWidth="435.0" />
+                        <Label layoutX="18.0" layoutY="72.0" prefHeight="25.0" prefWidth="114.0" text="Pakettien tiedot">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="483.0" layoutY="72.0" prefHeight="25.0" prefWidth="114.0" text="Esineiden tiedot">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="18.0" layoutY="330.0" prefHeight="25.0" prefWidth="114.0" text="Lähetysten tiedot">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="smartPostInfo" editable="false" layoutX="482.0" layoutY="396.0" prefHeight="180.0" prefWidth="435.0" />
+                        <Label layoutX="483.0" layoutY="330.0" prefHeight="25.0" prefWidth="234.0" text="SmartPost asemien tiedot">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="582.0" prefHeight="32.0" prefWidth="514.0" text="Postimies TIMO -minipeli:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="614.0" prefHeight="25.0" prefWidth="521.0" text="Kerää pisteitä pakkaamalla ja lähettämällä esineitä onnistuneesti.">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="639.0" prefHeight="25.0" prefWidth="522.0" text="Esineen pakkaamisesti saa pisteen, väärin pakkauksesta menettää pisteen.">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="664.0" prefHeight="25.0" prefWidth="518.0" text="Onnistuneesta lähetyksestä saa 2 pistettä">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="714.0" prefHeight="25.0" prefWidth="520.0" text="Muista siis laittaa 'Särkyvä' tarra pakatessasi särkyviä esineitä!">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="739.0" prefHeight="25.0" prefWidth="519.0" text="Pelin voittaa kun olet kerännyt 20 pistettä!">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="minigameMessage" editable="false" layoutX="19.0" layoutY="780.0" prefHeight="32.0" prefWidth="496.0" />
+                        <Button fx:id="goToMainButton" layoutX="724.0" layoutY="747.0" mnemonicParsing="false" onAction="#handleGoMainButtonAction" prefHeight="60.0" prefWidth="199.0" styleClass="largebutton" text="Lähetä paketti">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="goToPackageButton" layoutX="723.0" layoutY="668.0" mnemonicParsing="false" onAction="#handleGoPackButtonAction" prefHeight="60.0" prefWidth="200.0" styleClass="largebutton" text="Luo uusi paketti">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="17.0" layoutY="689.0" prefHeight="25.0" prefWidth="519.0" text="Jos paketti rikkoutuu lähetyksen aikana, menetät 2 pistettä.">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="miniGameInfo" editable="false" layoutX="540.0" layoutY="608.0" prefHeight="166.0" prefWidth="168.0" />
+                        <Label layoutX="540.0" layoutY="583.0" prefHeight="25.0" prefWidth="130.0" text="Pistetilanne:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="miniGameScore" editable="false" layoutX="540.0" layoutY="781.0" prefHeight="31.0" prefWidth="168.0" />
+                        <TextArea fx:id="packageScore" editable="false" layoutX="17.0" layoutY="98.0" prefHeight="35.0" prefWidth="435.0" />
+                        <TextArea fx:id="itemScore" editable="false" layoutX="482.0" layoutY="98.0" prefHeight="35.0" prefWidth="435.0" />
+                        <TextArea fx:id="shippingScore" editable="false" layoutX="17.0" layoutY="355.0" prefHeight="35.0" prefWidth="435.0" />
+                        <TextArea fx:id="smartPostScore" editable="false" layoutX="482.0" layoutY="355.0" prefHeight="35.0" prefWidth="435.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+    </children>
+    <stylesheets>
+    <URL value="@OIiotHT.css" />
+</stylesheets>
+</AnchorPane>
